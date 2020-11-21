@@ -1,0 +1,9 @@
+C:\Users\Jacob\OneDrive - Staffordshire University\Year 2\Network Applications\Week 6\CNA-Client-Server\Server\bin\Debug\Server.exe.config
+C:\Users\Jacob\OneDrive - Staffordshire University\Year 2\Network Applications\Week 6\CNA-Client-Server\Server\bin\Debug\Server.exe
+C:\Users\Jacob\OneDrive - Staffordshire University\Year 2\Network Applications\Week 6\CNA-Client-Server\Server\bin\Debug\Server.pdb
+C:\Users\Jacob\OneDrive - Staffordshire University\Year 2\Network Applications\Week 6\CNA-Client-Server\Server\obj\Debug\Server.csprojAssemblyReference.cache
+C:\Users\Jacob\OneDrive - Staffordshire University\Year 2\Network Applications\Week 6\CNA-Client-Server\Server\obj\Debug\Server.exe
+C:\Users\Jacob\OneDrive - Staffordshire University\Year 2\Network Applications\Week 6\CNA-Client-Server\Server\obj\Debug\Server.pdb
+C:\Users\Jacob\OneDrive - Staffordshire University\Year 2\Network Applications\Week 6\CNA-Client-Server\Server\bin\Debug\Packets.dll
+C:\Users\Jacob\OneDrive - Staffordshire University\Year 2\Network Applications\Week 6\CNA-Client-Server\Server\bin\Debug\Packets.pdb
+C:\Users\Jacob\OneDrive - Staffordshire University\Year 2\Network Applications\Week 6\CNA-Client-Server\Server\obj\Debug\Server.csproj.CopyComplete

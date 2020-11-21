@@ -1,0 +1,8 @@
+C:\Users\Jacob\OneDrive - Staffordshire University\Year 2\Network Applications\Week 6\CNA-Client-Server\Packets\bin\Debug\netstandard2.0\Packets.deps.json
+C:\Users\Jacob\OneDrive - Staffordshire University\Year 2\Network Applications\Week 6\CNA-Client-Server\Packets\bin\Debug\netstandard2.0\Packets.dll
+C:\Users\Jacob\OneDrive - Staffordshire University\Year 2\Network Applications\Week 6\CNA-Client-Server\Packets\bin\Debug\netstandard2.0\Packets.pdb
+C:\Users\Jacob\OneDrive - Staffordshire University\Year 2\Network Applications\Week 6\CNA-Client-Server\Packets\obj\Debug\netstandard2.0\Packets.csprojAssemblyReference.cache
+C:\Users\Jacob\OneDrive - Staffordshire University\Year 2\Network Applications\Week 6\CNA-Client-Server\Packets\obj\Debug\netstandard2.0\Packets.AssemblyInfoInputs.cache
+C:\Users\Jacob\OneDrive - Staffordshire University\Year 2\Network Applications\Week 6\CNA-Client-Server\Packets\obj\Debug\netstandard2.0\Packets.AssemblyInfo.cs
+C:\Users\Jacob\OneDrive - Staffordshire University\Year 2\Network Applications\Week 6\CNA-Client-Server\Packets\obj\Debug\netstandard2.0\Packets.dll
+C:\Users\Jacob\OneDrive - Staffordshire University\Year 2\Network Applications\Week 6\CNA-Client-Server\Packets\obj\Debug\netstandard2.0\Packets.pdb
