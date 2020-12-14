@@ -12,17 +12,3 @@ C:\Users\Jacob\OneDrive - Staffordshire University\Year 2\Network Applications\W
 C:\Users\Jacob\OneDrive - Staffordshire University\Year 2\Network Applications\Week 6\CNA-Client-Server\Client\bin\Debug\Packets.dll
 C:\Users\Jacob\OneDrive - Staffordshire University\Year 2\Network Applications\Week 6\CNA-Client-Server\Client\bin\Debug\Packets.pdb
 C:\Users\Jacob\OneDrive - Staffordshire University\Year 2\Network Applications\Week 6\CNA-Client-Server\Client\obj\Debug\Client.csproj.CopyComplete
-C:\Users\Jacob\Documents\GitHub\.NET-Chat-Client-Server\CNA-Client-Server\Client\bin\Debug\Client.exe.config
-C:\Users\Jacob\Documents\GitHub\.NET-Chat-Client-Server\CNA-Client-Server\Client\bin\Debug\Client.exe
-C:\Users\Jacob\Documents\GitHub\.NET-Chat-Client-Server\CNA-Client-Server\Client\bin\Debug\Client.pdb
-C:\Users\Jacob\Documents\GitHub\.NET-Chat-Client-Server\CNA-Client-Server\Client\bin\Debug\Packets.dll
-C:\Users\Jacob\Documents\GitHub\.NET-Chat-Client-Server\CNA-Client-Server\Client\bin\Debug\Packets.pdb
-C:\Users\Jacob\Documents\GitHub\.NET-Chat-Client-Server\CNA-Client-Server\Client\obj\Debug\Client.csprojAssemblyReference.cache
-C:\Users\Jacob\Documents\GitHub\.NET-Chat-Client-Server\CNA-Client-Server\Client\obj\Debug\ClientForm.g.cs
-C:\Users\Jacob\Documents\GitHub\.NET-Chat-Client-Server\CNA-Client-Server\Client\obj\Debug\Client_MarkupCompile.cache
-C:\Users\Jacob\Documents\GitHub\.NET-Chat-Client-Server\CNA-Client-Server\Client\obj\Debug\Client_MarkupCompile.lref
-C:\Users\Jacob\Documents\GitHub\.NET-Chat-Client-Server\CNA-Client-Server\Client\obj\Debug\ClientForm.baml
-C:\Users\Jacob\Documents\GitHub\.NET-Chat-Client-Server\CNA-Client-Server\Client\obj\Debug\Client.g.resources
-C:\Users\Jacob\Documents\GitHub\.NET-Chat-Client-Server\CNA-Client-Server\Client\obj\Debug\Client.csproj.CopyComplete
-C:\Users\Jacob\Documents\GitHub\.NET-Chat-Client-Server\CNA-Client-Server\Client\obj\Debug\Client.exe
-C:\Users\Jacob\Documents\GitHub\.NET-Chat-Client-Server\CNA-Client-Server\Client\obj\Debug\Client.pdb

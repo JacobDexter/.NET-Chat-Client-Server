@@ -180,20 +180,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Jacob\\.nuget\\packages\\": {}
+    "C:\\Users\\Jacob\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jacob\\Documents\\GitHub\\.NET-Chat-Client-Server\\CNA-Client-Server\\Packets\\Packets.csproj",
+      "projectUniqueName": "C:\\Users\\Jacob\\OneDrive - Staffordshire University\\Year 2\\Network Applications\\Week 6\\CNA-Client-Server\\Packets\\Packets.csproj",
       "projectName": "Packets",
-      "projectPath": "C:\\Users\\Jacob\\Documents\\GitHub\\.NET-Chat-Client-Server\\CNA-Client-Server\\Packets\\Packets.csproj",
+      "projectPath": "C:\\Users\\Jacob\\OneDrive - Staffordshire University\\Year 2\\Network Applications\\Week 6\\CNA-Client-Server\\Packets\\Packets.csproj",
       "packagesPath": "C:\\Users\\Jacob\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jacob\\Documents\\GitHub\\.NET-Chat-Client-Server\\CNA-Client-Server\\Packets\\obj\\",
+      "outputPath": "C:\\Users\\Jacob\\OneDrive - Staffordshire University\\Year 2\\Network Applications\\Week 6\\CNA-Client-Server\\Packets\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
         "C:\\Users\\Jacob\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"

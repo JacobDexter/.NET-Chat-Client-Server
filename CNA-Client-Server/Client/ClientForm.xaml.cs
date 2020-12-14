@@ -25,6 +25,8 @@ namespace Client
         public ClientForm(Client client)
         {
             InitializeComponent();
+            this.Height = 510.0f;
+            this.Width = 1080.0f;
 
             _client = client;
         }
@@ -33,8 +35,13 @@ namespace Client
         {
             MessageBox.Dispatcher.Invoke(() =>
             {
-                MessageBox.Text += message + Environment.NewLine;
-                MessageBox.ScrollToEnd();
+                ListBoxItem item = new ListBoxItem
+                {
+                    Content = message,
+                    Focusable = false
+                };
+                MessageBox.Items.Add(item);
+                MessageBox.ScrollIntoView(item);
             });
         }
 
@@ -42,7 +49,7 @@ namespace Client
         {
             if(InputField.Text.Length > 0 && !string.IsNullOrWhiteSpace(InputField.Text))//check if text box has anything in it or just whitespace
             {
-                _client.SendMessage(InputField.Text);
+                _client.TCPSendMessage(InputField.Text);
                 InputField.Clear();
             }
         }
@@ -50,11 +57,34 @@ namespace Client
         private void Connect_Click(object sender, RoutedEventArgs e)
         {
             _client.Connect("127.0.0.1", 4444);
+            _client.Login();
         }
 
         private void Disconnect_Click(object sender, RoutedEventArgs e)
         {
-            _client.Disconnect();
+            _client.DisconnectClient();
+        }
+
+        private void SetNickname_Click(object sender, RoutedEventArgs e)
+        {
+            _client.SetNickname(Nickname.Text);
+            Nickname.Clear();
+        }
+        
+        public void RefreshClientList(string[] clients, string[] ips)
+        {
+            ClientList.Dispatcher.Invoke(() =>
+            {
+                ClientList.Items.Clear();
+
+                for (int i = 0; i < clients.Length; i++)
+                {
+                    ListBoxItem item = new ListBoxItem();
+                    item.Content = clients[i] + " - " + ips[0];
+                    item.Focusable = false;
+                    ClientList.Items.Add(item);
+                }
+            });
         }
     }
 }

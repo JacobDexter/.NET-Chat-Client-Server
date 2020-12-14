@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Net;
+using System.Security.Cryptography;
 
 namespace Packets
 {
@@ -7,11 +9,15 @@ namespace Packets
         EMPTY,
         CHATMESSAGE,
         PRIVATEMESSAGE,
-        BROADCASTMESSAGE,
+        ANNOUNCEMESSAGE,
         SERVERMESSAGE,
         COMMANDMESSAGE,
         CLIENTNAME,
-        DISCONNECTREQUEST
+        DISCONNECTREQUEST,
+        DISCONNECTACCEPTED,
+        LOGIN,
+        SERVERKEY,
+        CLIENTLIST
     }
 
     [Serializable]
@@ -22,7 +28,7 @@ namespace Packets
         public string GetCurrentTime()
         {
             //return DateTime.Now.ToShortTimeString(); //24 hour clock
-            return DateTime.Now.ToString("h:mm:ss tt");
+            return DateTime.Now.ToString("h:mm:ss");
         }
     }
 
@@ -44,11 +50,11 @@ namespace Packets
     [Serializable]
     public class ChatMessagePacket : Packet
     {
-        public string Time { get; private set; }
-        public string OriginClient { get; set; }
-        public string Message { get; private set; }
+        public string Time { get; set; }
+        public byte[] OriginClient { get; set; }
+        public byte[] Message { get; private set; }
 
-        public ChatMessagePacket(string sentFrom, string message)
+        public ChatMessagePacket(byte[] sentFrom, byte[] message)
         {
             EPacketType = PacketType.CHATMESSAGE;
             OriginClient = sentFrom;
@@ -61,10 +67,10 @@ namespace Packets
     public class PrivateMessagePacket : Packet
     {
         public string Time { get; private set; }
-        public string OriginClient { get; private set; }
-        public string PrivateMessage { get; private set; }
+        public byte[] OriginClient { get; private set; }
+        public byte[] PrivateMessage { get; private set; }
 
-        public PrivateMessagePacket(string sentFrom, string pMessage)
+        public PrivateMessagePacket(byte[] sentFrom, byte[] pMessage)
         {
             EPacketType = PacketType.PRIVATEMESSAGE;
             OriginClient = sentFrom;
@@ -77,13 +83,11 @@ namespace Packets
     public class ServerMessagePacket : Packet
     {
         public string Time { get; private set; }
-        public string Prefix { get; private set; }
-        public string Message { get; private set; }
+        public byte[] Message { get; private set; }
 
-        public ServerMessagePacket(string message)
+        public ServerMessagePacket(byte[] message)
         {
             EPacketType = PacketType.SERVERMESSAGE;
-            Prefix = "[Server]: ";
             Message = message;
             Time = GetCurrentTime();
         }
@@ -92,12 +96,25 @@ namespace Packets
     [Serializable]
     public class CommandMessagePacket : Packet
     {
-        public string Message { get; private set; }
+        public byte[] Message { get; private set; }
 
-        public CommandMessagePacket(string message)
+        public CommandMessagePacket(byte[] message)
         {
             EPacketType = PacketType.COMMANDMESSAGE;
             Message = message;
+        }
+    }
+
+    [Serializable]
+    public class AnnouncementMessagePacket : Packet
+    {
+        public string Time { get; private set; }
+        public byte[] Message { get; private set; }
+        public AnnouncementMessagePacket(byte[] announcement)
+        {
+            EPacketType = PacketType.ANNOUNCEMESSAGE;
+            Message = announcement;
+            Time = GetCurrentTime();
         }
     }
 
@@ -108,9 +125,9 @@ namespace Packets
     [Serializable]
     public class ClientNamePacket : Packet
     {
-        public string ClientName { get; private set; }
+        public byte[] ClientName { get; private set; }
 
-        public ClientNamePacket(string name)
+        public ClientNamePacket(byte[] name)
         {
             EPacketType = PacketType.CLIENTNAME;
             ClientName = name;
@@ -121,13 +138,58 @@ namespace Packets
     public class DisconnectRequestPacket : Packet
     {
         public string Time { get; private set; }
-        public string ClientName { get; private set; }
 
-        public DisconnectRequestPacket(string name)
+        public DisconnectRequestPacket()
         {
             EPacketType = PacketType.DISCONNECTREQUEST;
-            ClientName = name;
             Time = GetCurrentTime();
+        }
+    }
+
+    //Encryption
+
+    [Serializable]
+    public class LoginPacket : Packet
+    {
+        public IPEndPoint EndPoint { get; private set; }
+        public RSAParameters PublicKey { get; private set; }
+
+        public LoginPacket(IPEndPoint IPEndPoint, RSAParameters publicKey)
+        {
+            EPacketType = PacketType.LOGIN;
+            EndPoint = IPEndPoint;
+            PublicKey = publicKey;
+        }
+    }
+
+    ///////////////////
+    ////Server Data////
+    ///////////////////
+
+    [Serializable]
+    public class ServerKeyPacket : Packet
+    {
+        public RSAParameters ServerKey { get; private set; }
+        public bool Successful { get; private set; }
+
+        public ServerKeyPacket(RSAParameters serverKey, bool success)
+        {
+            EPacketType = PacketType.SERVERKEY;
+            ServerKey = serverKey;
+            Successful = success;
+        }
+    }
+
+    [Serializable]
+    public class ClientListPacket : Packet
+    {
+        public string[] ClientList { get; private set; }
+        public string[] ClientIPS { get; private set; }
+        public ClientListPacket(string[] clients, string[] ips)
+        {
+            EPacketType = PacketType.CLIENTLIST;
+            ClientList = clients;
+            ClientIPS = ips;
         }
     }
 }

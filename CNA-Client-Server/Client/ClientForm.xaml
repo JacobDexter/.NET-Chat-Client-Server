@@ -5,15 +5,20 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Client"
              mc:Ignorable="d" 
-             d:DesignHeight="457.5" Width="929">
+             d:DesignHeight="510" Width="1080">
     <Grid>
-        <TextBox x:Name="MessageBox" HorizontalAlignment="Left" Height="344" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="772" IsReadOnly="True" Cursor="Arrow"/>
-        <TextBlock HorizontalAlignment="Left" Height="0" Margin="431,166,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="31"/>
-        <Button x:Name="SubmitButton" Content="Submit" HorizontalAlignment="Left" Margin="662,359,0,0" VerticalAlignment="Top" Width="120" Height="50" Click="SubmitButton_Click"/>
-        <TextBox x:Name="InputField" HorizontalAlignment="Left" Height="50" Margin="10,359,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="647"/>
-        <Button x:Name="Connect" Content="Connect" HorizontalAlignment="Left" Margin="787,10,0,0" VerticalAlignment="Top" Width="111" Height="45" Click="Connect_Click"/>
-        <Button x:Name="Disconnect" Content="Disconnect" HorizontalAlignment="Left" Margin="787,60,0,0" VerticalAlignment="Top" Width="111" Height="45" Click="Disconnect_Click"/>
-        <TextBox x:Name="Nickname" HorizontalAlignment="Left" Height="23" Margin="787,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="111"/>
-        <Button x:Name="SetNickName" Content="Set Nickname" HorizontalAlignment="Left" Margin="787,138,0,0" VerticalAlignment="Top" Width="111" Height="28"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="149*"/>
+            <ColumnDefinition Width="759*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock HorizontalAlignment="Left" Height="0" Margin="282,166,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="31" Grid.Column="1"/>
+        <Button x:Name="SubmitButton" Content="Submit" HorizontalAlignment="Left" Margin="453,357,0,0" VerticalAlignment="Top" Width="120" Height="56" Click="SubmitButton_Click" Grid.Column="1"/>
+        <TextBox x:Name="InputField" HorizontalAlignment="Left" Height="56" Margin="10,357,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="614" Grid.ColumnSpan="2"/>
+        <Button x:Name="Connect" Content="Connect" HorizontalAlignment="Left" Margin="10,418,0,0" VerticalAlignment="Top" Width="111" Height="45" Click="Connect_Click"/>
+        <Button x:Name="Disconnect" Content="Disconnect" HorizontalAlignment="Left" Margin="126,418,0,0" VerticalAlignment="Top" Width="111" Height="45" Click="Disconnect_Click" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="Nickname" HorizontalAlignment="Left" Height="23" Margin="578,357,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="191" Grid.Column="1"/>
+        <Button x:Name="SetNickName" Content="Set Nickname" HorizontalAlignment="Left" Margin="578,385,0,0" VerticalAlignment="Top" Width="191" Height="28" Click="SetNickname_Click" Grid.Column="1"/>
+        <ListBox x:Name="ClientList" HorizontalAlignment="Left" Height="344" Margin="578,10,0,0" VerticalAlignment="Top" Width="191" Grid.Column="1"/>
+        <ListBox x:Name="MessageBox" HorizontalAlignment="Left" Height="344" Margin="10,10,0,0" VerticalAlignment="Top" Width="739" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>
