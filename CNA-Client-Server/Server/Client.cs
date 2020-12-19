@@ -30,7 +30,6 @@ namespace Server
         //thread management
         private object _readLock;
         private object _writeLock;
-        private object _writeLock2;
         private object _encryptLock;
         private object _decryptLock;
 
@@ -55,7 +54,6 @@ namespace Server
 
             _readLock = new object();
             _writeLock = new object();
-            _writeLock2 = new object();
             _encryptLock = new object();
             _decryptLock = new object();
 
@@ -77,9 +75,9 @@ namespace Server
 
         public Packet TCPRead()
         {
-            try
+            lock (_readLock)
             {
-                lock (_readLock)
+                try
                 {
                     int numberOfBytes;
                     if ((numberOfBytes = _reader.ReadInt32()) != -1)
@@ -90,7 +88,7 @@ namespace Server
                         Packet packet = _binaryFormatter.Deserialize(memoryStream) as Packet;
 
                         //decrypt relevant packets
-                        switch(packet.EPacketType)
+                        switch (packet.EPacketType)
                         {
                             case PacketType.CHATMESSAGE:
                                 ChatMessagePacket chatMessagePacket = (ChatMessagePacket)packet;
@@ -110,11 +108,11 @@ namespace Server
                         return null;
                     }
                 }
-            }
-            catch(Exception e)
-            {
-                Console.WriteLine("[Error] " + e.Message + e.StackTrace);
-                return null;
+                catch (Exception e)
+                {
+                    Console.WriteLine("[Error] " + e.Message + e.StackTrace);
+                    return null;
+                }
             }
         }
 
@@ -122,28 +120,35 @@ namespace Server
         {
             lock (_writeLock)
             {
-                //encrypt relevant packets
-                switch(packet.EPacketType)
+                try
                 {
-                    case PacketType.CHATMESSAGE:
-                        ChatMessagePacket chatMessagePacket = (ChatMessagePacket)packet;
-                        Serialize(new ChatMessagePacket(Encrypt(chatMessagePacket.OriginClient), Encrypt(chatMessagePacket.Message)));
-                        break;
-                    case PacketType.SERVERMESSAGE:
-                        ServerMessagePacket serverMessagePacket = (ServerMessagePacket)packet;
-                        Serialize(new ServerMessagePacket(Encrypt(serverMessagePacket.Message)));
-                        break;
-                    case PacketType.PRIVATEMESSAGE:
-                        PrivateMessagePacket privateMessagePacket = (PrivateMessagePacket)packet;
-                        Serialize(new PrivateMessagePacket(Encrypt(privateMessagePacket.OriginClient), Encrypt(privateMessagePacket.PrivateMessage)));
-                        break;
-                    case PacketType.ANNOUNCEMESSAGE:
-                        AnnouncementMessagePacket announcementMessagePacket = (AnnouncementMessagePacket)packet;
-                        Serialize(new AnnouncementMessagePacket(Encrypt(announcementMessagePacket.Message)));
-                        break;
-                    default:
-                        Serialize(packet);
-                        break;
+                    //encrypt relevant packets
+                    switch (packet.EPacketType)
+                    {
+                        case PacketType.CHATMESSAGE:
+                            ChatMessagePacket chatMessagePacket = (ChatMessagePacket)packet;
+                            Serialize(new ChatMessagePacket(Encrypt(chatMessagePacket.OriginClient), Encrypt(chatMessagePacket.Message)));
+                            break;
+                        case PacketType.SERVERMESSAGE:
+                            ServerMessagePacket serverMessagePacket = (ServerMessagePacket)packet;
+                            Serialize(new ServerMessagePacket(Encrypt(serverMessagePacket.Message)));
+                            break;
+                        case PacketType.PRIVATEMESSAGE:
+                            PrivateMessagePacket privateMessagePacket = (PrivateMessagePacket)packet;
+                            Serialize(new PrivateMessagePacket(Encrypt(privateMessagePacket.OriginClient), Encrypt(privateMessagePacket.PrivateMessage)));
+                            break;
+                        case PacketType.ANNOUNCEMESSAGE:
+                            AnnouncementMessagePacket announcementMessagePacket = (AnnouncementMessagePacket)packet;
+                            Serialize(new AnnouncementMessagePacket(Encrypt(announcementMessagePacket.Message)));
+                            break;
+                        default:
+                            Serialize(packet);
+                            break;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("[Error] " + e.Message + e.StackTrace);
                 }
             }
         }
@@ -162,9 +167,17 @@ namespace Server
         {
             lock(_encryptLock)
             {
-                //encrypt data using the client public key
-                _RSAProvider.ImportParameters(_clientKey);
-                return _RSAProvider.Encrypt(data, true);
+                try
+                {
+                    //encrypt data using the client public key
+                    _RSAProvider.ImportParameters(_clientKey);
+                    return _RSAProvider.Encrypt(data, true);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("[Error] " + e.Message + e.StackTrace);
+                    return null;
+                }
             }
         }
 
@@ -172,9 +185,17 @@ namespace Server
         {
             lock (_decryptLock)
             {
-                //decrypt data using the client private key
-                _RSAProvider.ImportParameters(_privateKey);
-                return _RSAProvider.Decrypt(data, true);
+                try
+                {
+                    //decrypt data using the client private key
+                    _RSAProvider.ImportParameters(_privateKey);
+                    return _RSAProvider.Decrypt(data, true);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("[Error] " + e.Message + e.StackTrace);
+                    return null;
+                }
             }
         }
 

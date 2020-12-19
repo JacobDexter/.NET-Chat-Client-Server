@@ -4,7 +4,7 @@
 exe
 C#
 .cs
-C:\Users\Jacob\OneDrive - Staffordshire University\Year 2\Network Applications\Week 6\CNA-Client-Server\Client\obj\Debug\
+C:\Users\Jacob\Desktop\CNA\CNA-Client-Server\Client\obj\Debug\
 Client
 none
 false
@@ -13,7 +13,7 @@ DEBUG;TRACE
 189982384
 
 4968673785
-15697410715
+15518317907
 ClientForm.xaml;
 
 False

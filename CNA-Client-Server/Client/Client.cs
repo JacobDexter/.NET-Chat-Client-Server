@@ -309,8 +309,6 @@ namespace Client
 
         private void Close()
         {
-            _tcpThread.Suspend();
-            _udpThread.Suspend();
             _stream.Close();
             _udpClient.Close();
             _tcpClient.Close();

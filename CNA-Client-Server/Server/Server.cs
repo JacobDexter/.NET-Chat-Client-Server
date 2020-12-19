@@ -171,9 +171,10 @@ namespace Server
 
 
                         case PacketType.DISCONNECTREQUEST:
-                            Thread.Sleep(1);
                             DisconnectRequestPacket disconnectRequestPacket = (DisconnectRequestPacket)receivedPacket;
-                            Thread.CurrentThread.Abort();
+                            //Announce client has joined to all clients
+                            ServerMessagePacket serverMessagePacket3 = new ServerMessagePacket(UTF8.GetBytes(_clients[index].clientData.clientNickname + " has left the server!"));
+                            TCPSendPacketToAll(serverMessagePacket3);
                             _clients[index].Close();
                             break;
 
@@ -216,6 +217,7 @@ namespace Server
 
             try
             {
+                _clients[index].Close();
                 //Take client out of client ConcurrentBag
                 _clients.TryRemove(index, out Client c);
             }
@@ -227,19 +229,21 @@ namespace Server
 
         private void TCPSendPacketToAll(Packet packet)
         {
-            for (int i = 0; i < _clients.Count; i++)
+            foreach (Client c in _clients.Values)
             {
-                _clients[i].TCPSend(packet);
+                c.TCPSend(packet);
             }
         }
 
         private string[] GetClientNames()
         {
             string[] clients = new string[_clients.Count];
+            int loopCount = 0;
 
-            for(int i = 0; i < _clients.Count; i++)
+            foreach (Client c in _clients.Values)
             {
-                clients[i] = _clients[i].clientData.clientNickname;
+                clients[loopCount] = c.clientData.clientNickname;
+                loopCount++;
             }
 
             return clients;
@@ -248,10 +252,11 @@ namespace Server
         private string[] GetClientAddresses()
         {
             string[] ips = new string[_clients.Count];
+            int loopCount = 0;
 
-            for (int i = 0; i < _clients.Count; i++)
+            foreach (Client c in _clients.Values)
             {
-                ips[i] = _clients[i].clientData.ipEndPoint.ToString();
+                ips[loopCount] = c.clientData.ipEndPoint.ToString();
             }
 
             return ips;
@@ -290,7 +295,6 @@ namespace Server
             {
                 OutputLog("[Error] " + e.Message + e.StackTrace);
             }
-            Thread.CurrentThread.Suspend();
         }
 
         private void ProcessCommand(Client client, string command)

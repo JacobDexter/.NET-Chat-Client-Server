@@ -186,11 +186,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jacob\\OneDrive - Staffordshire University\\Year 2\\Network Applications\\Week 6\\CNA-Client-Server\\Packets\\Packets.csproj",
+      "projectUniqueName": "C:\\Users\\Jacob\\Desktop\\CNA\\CNA-Client-Server\\Packets\\Packets.csproj",
       "projectName": "Packets",
-      "projectPath": "C:\\Users\\Jacob\\OneDrive - Staffordshire University\\Year 2\\Network Applications\\Week 6\\CNA-Client-Server\\Packets\\Packets.csproj",
+      "projectPath": "C:\\Users\\Jacob\\Desktop\\CNA\\CNA-Client-Server\\Packets\\Packets.csproj",
       "packagesPath": "C:\\Users\\Jacob\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jacob\\OneDrive - Staffordshire University\\Year 2\\Network Applications\\Week 6\\CNA-Client-Server\\Packets\\obj\\",
+      "outputPath": "C:\\Users\\Jacob\\Desktop\\CNA\\CNA-Client-Server\\Packets\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
